@@ -19,7 +19,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 	
 	function AssertException(message) {
 		this.message = message;
-		this.toString = function () { return this.constructor.name + ': ' + this.message; }
+		this.toString = function toString() { return this.constructor.name + ': ' + this.message; }
 	}
 
 	Assert.AssertException = AssertException;
@@ -182,7 +182,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 			: exception.name + ' was never thrown'
 	}
 
-	c24w.namespace('Assert.not', function () {
+	c24w.namespace('Assert.not', function namespace_assert_not() {
 
 		Assert.not['null'] = function assert_not_null(subject, optionalInfo) {
 			assertArgs(1, 2);
