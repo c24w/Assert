@@ -1,3 +1,0 @@
-[submodule "Tests/JTF"]
-	path = Tests/JTF
-	url = git://github.com/c24w/JavaScript-Testing-Framework.git
