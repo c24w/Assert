@@ -1,4 +1,4 @@
-(function(f){var e=window;f.namespace=function(a,b,c){"function"===typeof a&&(c=a,a=e,b=void 0);"function"===typeof b&&(c=b,"string"===typeof a?(b=a,a=e):b=void 0);var d=a;b&&b.split(".").forEach(function(a){d=d[a]=d[a]||{}});c&&c(d)};f.setNamespaceRoot=function(a){e=a}})(window.c24w=window.c24w||{});
+//(function(f){var e=window;f.namespace=function(a,b,c){"function"===typeof a&&(c=a,a=e,b=void 0);"function"===typeof b&&(c=b,"string"===typeof a?(b=a,a=e):b=void 0);var d=a;b&&b.split(".").forEach(function(a){d=d[a]=d[a]||{}});c&&c(d)};f.setNamespaceRoot=function(a){e=a}})(window.c24w=window.c24w||{});
 
 c24w.setNamespaceRoot(c24w);
 
@@ -19,7 +19,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 	
 	function AssertException(message) {
 		this.message = message;
-		this.toString = function toString() { return this.constructor.name + ': ' + this.message; }
+		this.toString = function toString() { return this.constructor.name + ': ' + this.message; };
 	}
 
 	Assert.AssertException = AssertException;
@@ -39,35 +39,35 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 	}
 
 	Assert.that = function assert_that(subject) {
-		function AssertThat(subject){
+		function AssertThat(subject) {
 			var A = Assert;
 			var AN = A.not;
-			this.equals = function equals(expected) { A.equal(subject, expected) },
-			this.throws = function throws(exception) { return A.throws(subject, exception) },
+			this.equals = function equals(expected) { A.equal(subject, expected); },
+			this.throws = function throws(exception) { return A.throws(subject, exception); },
 			this.does = {
 				not: {
-					equal: function does_not_equal(expected) { AN.equal(subject, expected) },
-					'throw': function does_not_throw(exception) { AN.throws(subject, exception) }
+					equal: function does_not_equal(expected) { AN.equal(subject, expected); },
+					'throw': function does_not_throw(exception) { AN.throws(subject, exception); }
 				}
 			},
 			this.is = {
-				'true': function is_true() { A.true(subject) },
-				'false': function is_false() { A.false(subject) },
-				'null': function is_null() { A.null(subject) },
-				equiv: { to: function is_equiv_to(expected) { A.equiv(subject, expected) } },
-				greater: { than: function is_greater_than(expected) { A.greater(subject, expected) } },
-				less: { than: function is_less_than(expected) { A.less(subject, expected) } },
-				instance: { of: function is_instance_of(objClass) { A.instance(subject, objClass) } },
-				type: function is_type(type) { A.type(subject, type) },
+				'true': function is_true() { A.true(subject); },
+				'false': function is_false() { A.false(subject); },
+				'null': function is_null() { A.null(subject); },
+				equiv: { to: function is_equiv_to(expected) { A.equiv(subject, expected); } },
+				greater: { than: function is_greater_than(expected) { A.greater(subject, expected); } },
+				less: { than: function is_less_than(expected) { A.less(subject, expected); } },
+				instance: { of: function is_instance_of(objClass) { A.instance(subject, objClass); } },
+				type: function is_type(type) { A.type(subject, type); },
 				not: {
-					'null': function is_not_null() { AN.null(subject) },
-					equal: { to: function is_not_null(expected) { AN.equal(subject, expected) } },
-					equiv: { to: function is_not_equiv(expected) { AN.equiv(subject, expected) } },
-					instance: { of: function is_not_instance(objClass) { AN.instance(subject, objClass) } },
-					type: function is_not_type(type) { AN.type(subject, type) },
+					'null': function is_not_null() { AN.null(subject); },
+					equal: { to: function is_not_null(expected) { AN.equal(subject, expected); } },
+					equiv: { to: function is_not_equiv(expected) { AN.equiv(subject, expected); } },
+					instance: { of: function is_not_instance(objClass) { AN.instance(subject, objClass); } },
+					type: function is_not_type(type) { AN.type(subject, type); },
 				}
-			}
-		};
+			};
+		}
 		return new AssertThat(subject);
 	};
 
@@ -177,9 +177,9 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 	};
 
 	function notThrownError(exception) {
-		return (typeof exception === 'undefined')
-			? 'no exceptions were thrown'
-			: exception.name + ' was never thrown'
+		return (typeof exception === 'undefined') ?
+			'no exceptions were thrown' :
+			exception.name + ' was never thrown';
 	}
 
 	c24w.namespace('Assert.not', function namespace_assert_not() {
