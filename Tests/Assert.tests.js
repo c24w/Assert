@@ -286,6 +286,28 @@ JTF.loadFramework(function () {
 					.addCase(1, 2)
 					.addCase('hi', 'bye');
 				},
+				'Assert.that(*).is.equal.to(*) should pass for true conditions': function (TestCase) {
+					assertPass(function () {
+						TestCase(function (data1, data2) {
+							Assert.that(data1).is.equal.to(data2)
+						})
+						.addCase(1, 1)
+						.addCase('abc', "abc")
+						.addCase(true, true);
+					});
+				},
+				'Assert.that(*).is.equal.to(*) should fail for false conditions': function (TestCase) {
+					TestCase(
+						function (data1, data2) {
+							assertFail(function () {
+								Assert.that(data1).is.equal.to(data2);
+							}, 'expected: {0} found: {1}'.format(data2, data1));
+						}
+					)
+					.addCase(true, false)
+					.addCase(1, 2)
+					.addCase('hi', 'bye');
+				},
 
 				'Assert.that(*).does.not.equal(*) / Assert.that(*).is.not.equal.to(*) should pass for true conditions': function (TestCase) {
 					assertPass(function () {

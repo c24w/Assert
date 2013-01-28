@@ -1,4 +1,45 @@
-(function(f){var e=window;f.namespace=function(a,b,c){"function"===typeof a&&(c=a,a=e,b=void 0);"function"===typeof b&&(c=b,"string"===typeof a?(b=a,a=e):b=void 0);var d=a;b&&b.split(".").forEach(function(a){d=d[a]=d[a]||{}});c&&c(d)};f.setNamespaceRoot=function(a){e=a}})(window.c24w=window.c24w||{});
+(function set_up_c24w_namespace(c24w) {
+	
+	var rootNode = window;
+	
+	c24w.namespace = c24w.namespace || function namespace(baseNode, namespaceString, callback) {
+		if (typeof baseNode === 'function') {
+			callback = baseNode;
+			baseNode = rootNode;
+			namespaceString = undefined;
+		}
+		if (typeof namespaceString === 'function') {
+			callback = namespaceString;
+			if (typeof baseNode === 'string') {
+				namespaceString = baseNode;
+				baseNode = rootNode;
+			}
+			else namespaceString = undefined;
+		}
+	
+		var currentNode = baseNode;
+	
+		if (namespaceString) {
+			var nodes = namespaceString.split('.');
+			nodes.forEach(function (node) { currentNode = add(node).to(currentNode); });
+		}
+	
+		if (callback) callback(currentNode);
+	};
+	
+	function add(newNode) {
+		return {
+			to: function (existingNode) {
+				return existingNode[newNode] = existingNode[newNode] || {};
+			}
+		};
+	}
+	
+	c24w.setNamespaceRoot = c24w.setNamespaceRoot || function setNamespaceRoot(node) {
+		rootNode = node;
+	};
+ 
+})(window.c24w = window.c24w || {});
 
 c24w.setNamespaceRoot(c24w);
 
@@ -54,6 +95,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 				'true': function is_true() { A.true(subject); },
 				'false': function is_false() { A.false(subject); },
 				'null': function is_null() { A.null(subject); },
+				equal: { to: function is_equal_to(expected) { A.equal(subject, expected); } },
 				equiv: { to: function is_equiv_to(expected) { A.equiv(subject, expected); } },
 				greater: { than: function is_greater_than(expected) { A.greater(subject, expected); } },
 				less: { than: function is_less_than(expected) { A.less(subject, expected); } },

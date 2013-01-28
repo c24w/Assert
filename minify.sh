@@ -1,0 +1,1 @@
+java -jar ./closure-compiler/compiler.jar --js Assert.js --js_output_file Assert.min.js
