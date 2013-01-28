@@ -1,4 +1,4 @@
-//(function(f){var e=window;f.namespace=function(a,b,c){"function"===typeof a&&(c=a,a=e,b=void 0);"function"===typeof b&&(c=b,"string"===typeof a?(b=a,a=e):b=void 0);var d=a;b&&b.split(".").forEach(function(a){d=d[a]=d[a]||{}});c&&c(d)};f.setNamespaceRoot=function(a){e=a}})(window.c24w=window.c24w||{});
+(function(f){var e=window;f.namespace=function(a,b,c){"function"===typeof a&&(c=a,a=e,b=void 0);"function"===typeof b&&(c=b,"string"===typeof a?(b=a,a=e):b=void 0);var d=a;b&&b.split(".").forEach(function(a){d=d[a]=d[a]||{}});c&&c(d)};f.setNamespaceRoot=function(a){e=a}})(window.c24w=window.c24w||{});
 
 c24w.setNamespaceRoot(c24w);
 

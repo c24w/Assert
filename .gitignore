@@ -1,0 +1,2 @@
+$ cat .gitignore
+closure-compiler
