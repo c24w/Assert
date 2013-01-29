@@ -104,7 +104,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 			var A = Assert;
 			var AN = A.not;
 			this.equals = function equals(expected) { A.equal(subject, expected); },
-			this.throws = function throws(exception) { return A.throws(subject, exception); },
+			this['throws'] = function throws(exception) { return A.throws(subject, exception); },
 			this.does = {
 				not: {
 					equal: function does_not_equal(expected) { AN.equal(subject, expected); },
@@ -123,7 +123,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 				type: function is_type(type) { A.type(subject, type); },
 				not: {
 					'null': function is_not_null() { AN.null(subject); },
-					equal: { to: function is_not_null(expected) { AN.equal(subject, expected); } },
+					equal: { to: function is_not_equal(expected) { AN.equal(subject, expected); } },
 					equiv: { to: function is_not_equiv(expected) { AN.equiv(subject, expected); } },
 					instance: { of: function is_not_instance(objClass) { AN.instance(subject, objClass); } },
 					type: function is_not_type(type) { AN.type(subject, type); },

@@ -1,7 +1,12 @@
+(function(){
+
+// clone c24w.Assert from Assert.js into a new object, to prevent being overriden below by c24w.Assert created by loadFramework
+var Assert = c24w.Assert;
+delete c24w.Assert;
+
 JTF.loadFramework(function () {
 	JTF.loadHtmlResources(function () {
 
-		var Assert = c24w.Assert;
 		var genericFailMsg = 'should fail';
 		function TestException(message) { this.message = message }
 
@@ -807,3 +812,5 @@ JTF.loadFramework(function () {
 
 	});
 });
+
+})();
