@@ -1,24 +1,4 @@
-/*
-
-Change to use this for
-	Assert.that(subject).is.not.null
-over
-	Assert.that(subject).is.not.null()
-etc
-
-function AT(subject){
-	return new function(){
-	    Object.defineProperty(this, 'isNotNull', {
-	        get: function get(){
-	            return subject !== null;
-	        }
-	    });
-	};
-}
-
-*/
-
-(function set_up_c24w_namespace(c24w) {
+(function setUpNamespacing(c24w) {
 	
 	var rootNode = window;
 	
