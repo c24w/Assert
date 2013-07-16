@@ -1,4 +1,4 @@
-Assert
+`assert.js`
 ======
 
 Assertion library
