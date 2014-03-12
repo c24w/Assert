@@ -1,49 +1,4 @@
-(function setUpNamespacing(c24w) {
-	
-	var rootNode = window;
-	
-	c24w.namespace = c24w.namespace || function namespace(baseNode, namespaceString, callback) {
-		if (typeof baseNode === 'function') {
-			callback = baseNode;
-			baseNode = rootNode;
-			namespaceString = undefined;
-		}
-		if (typeof namespaceString === 'function') {
-			callback = namespaceString;
-			if (typeof baseNode === 'string') {
-				namespaceString = baseNode;
-				baseNode = rootNode;
-			}
-			else namespaceString = undefined;
-		}
-	
-		var currentNode = baseNode;
-	
-		if (namespaceString) {
-			var nodes = namespaceString.split('.');
-			nodes.forEach(function (node) { currentNode = add(node).to(currentNode); });
-		}
-	
-		if (callback) callback(currentNode);
-	};
-	
-	function add(newNode) {
-		return {
-			to: function (existingNode) {
-				return existingNode[newNode] = existingNode[newNode] || {};
-			}
-		};
-	}
-	
-	c24w.setNamespaceRoot = c24w.setNamespaceRoot || function setNamespaceRoot(node) {
-		rootNode = node;
-	};
- 
-})(window.c24w = window.c24w || {});
-
-c24w.setNamespaceRoot(c24w);
-
-c24w.namespace('Assert', function namespace_assert(Assert) {
+(function namespace_assert(Assert) {
 
 	function buildMessage(actual, expected) {
 		return 'expected: {0} found: {1}'.format(expected, actual);
@@ -224,7 +179,7 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 			exception.name + ' was never thrown';
 	}
 
-	c24w.namespace('Assert.not', function namespace_assert_not() {
+	(function namespace_assert_not(AssertNot) {
 
 		Assert.not['null'] = function assert_not_null(subject, optionalInfo) {
 			assertArgs(1, 2);
@@ -287,6 +242,6 @@ c24w.namespace('Assert', function namespace_assert(Assert) {
 			}
 		};
 
-	});
+	})(Assert.not = Assert.not || {});
 
-});
+})((this.c24w = this.c24w || {}) && (this.c24w.Assert = this.c24w.Assert || {}));
